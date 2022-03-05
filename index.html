@@ -1,0 +1,138 @@
+                    <!-- #region Doctype, Headers -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Starship</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=space+mono">
+</head>
+<body>
+<!-- #endregion -->
+
+                    <!-- #region Starfield Canvas -->
+
+        <div class="canvas-container fixed-top js-container" id="starfield">
+            <canvas class="100 canvas-container__canvas js-canvas">
+                Starfield Canvas
+            </canvas>
+        </div>
+
+    <!-- #endregion -->
+
+    <!-- #region Page Content-->
+
+    <div class="contentcontainer"> 
+
+        <!-- INTRO AREA -->
+        <div class="contentcontainer" style="height:150vh">
+            <div id = "introdiv" class="contentcontainer" style="width:100px; position:absolute; top:60vh; left:20vw">
+                <img class="panel" src="image/heroship.png" />
+                <div id = "introtext" class = "introtext" 
+                style=" color:white;
+                        text-align:center;
+                        position:relative;
+                        font-size:12pt">
+                </div>
+            </div>
+        </div>
+
+        <!-- Content-->
+        <div> <img class="panel"   src="image/atPC%20(crop)%20.png" /> </div>
+
+        <div class = "paneltext"   id="justsomuch"> </div>
+
+        <div class="contentspacer" style="height:40vh">  </div>
+
+        <div class = "paneltext"   id="testpanel"> </div>
+
+        <div class="contentspacer" style="height:100vh">  </div>
+
+        
+    </div>
+
+    <!-- #endregion -->
+
+    <!-- #region Script Loading -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src="./js/starfield.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
+    <!-- #endregion -->
+
+    <!-- #region Page Scripting -->
+    <script>
+        
+    //#region ======= SETTING PANEL TEXT ====== 
+        var textarray =  
+        {
+            justsomuch: 
+            `<b>Day 256.</b> 
+            Still no sight of land, in any direction. <br> 
+            210 solar systems in this galaxy. <br> 412 galaxies in this cluster. <br> 
+            There's just so...    <i>much</i>.`
+
+            , showerpodcast: 
+            `I leave the shower running as a sort of... <br>
+            <i>podcast</i>`
+            
+            , testpanel:
+            `I've got so much time today.&nbsp;
+            I've got hopes and dreams and plans all yet to be made.&nbsp;<br />So look&nbsp;<strong>out the way!&nbsp;</strong>`
+        } ;
+        // #endregion 
+
+        
+
+    //#region GSAP Animation Scripts 
+
+        gsap.registerPlugin(ScrollTrigger , TextPlugin);
+        var width = document.body.clientWidth;
+
+
+        //#region   Intro animation.
+
+                gsap.to("#introdiv", {x: 0.8*width, duration: 20, ease:"none"});
+                gsap.to("#introtext", 
+                {
+                    duration: 3, 
+                    delay: 2,
+                    text: "Starship"
+                } );
+        //#endregion
+
+
+
+        //#region   Loop through all text panel animations.  
+
+        
+            const textpanels = gsap.utils.toArray(".paneltext");
+            textpanels.forEach( t => 
+            {
+                gsap.to(t,
+                {
+                    duration: 10,
+                    text: 
+                    {
+                        value: textarray[t.id],
+                        speed: 0.8 
+                    },
+                    ease:"none",
+                    scrollTrigger: t
+                });
+            });
+        
+        // #endregion        
+        
+
+    //#endregion 
+
+
+    </script>
+    <!-- #endregion -->
+</body>
+</html>
+ 
