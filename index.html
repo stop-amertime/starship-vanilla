@@ -60,8 +60,8 @@
             <div class = "contentspacer" style = "height:50vh">  </div>
 
             <!-- #region atPC -->
-            <div class = "paneltextdiv"> <p class = "paneltext" id="atPC"></p> </div>
-            <div> <img class="panel"     src="image/atPC.png" /> </div>
+                <div class = "paneltextdiv"> <p class = "paneltext" id="atPC"></p> </div>
+                <div> <img class="panel"     src="image/atPC.png" /> </div>
             <!-- #endregion -->
 
             <div class = "contentspacer" style = "height:200vh">  </div>
@@ -142,7 +142,11 @@
                         speed: 0.8,
                     },
                     ease:"none",
-                    scrollTrigger: t
+                    scrollTrigger: {
+                        trigger: t,
+                        preventOverlaps: true,
+                        fastScrollEnd: true
+                    }
                 });
             });
         
