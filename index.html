@@ -1,4 +1,4 @@
-    <!-- #region [ rgba(200, 200, 200, 0.1) ] Doctype, Headers -->
+    <!-- Doctype, Headers                       #region [ rgba(200, 200, 200, 0.1) ]  -->
 
         <!DOCTYPE html>
         <html lang="en">
@@ -10,8 +10,8 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=space+mono">
         </head>
         <body>
-<!-- #endregion -->
-    <!-- #region [ rgba(200, 200, 200, 0.1) ] Starfield Canvas -->
+        <!-- #endregion -->
+    <!-- Starfield Canvas                       #region [ rgba(200, 200, 200, 0.1) ]  -->
 
         <div class="canvas-container fixed-top js-container" id="starfield">
             <canvas class="100 canvas-container__canvas js-canvas">
@@ -19,11 +19,23 @@
             </canvas>
         </div>
 
-    <!-- #endregion -->
+        <!-- #endregion -->
     
-    <!-- #region [ rgba(255, 255, 255, 0.1) ] PAGE CONTENT ------ -->
-        <div class="contentcontainer"> 
+<!-- TEMPLATES 
+        CONTENT SPACER: 
+                <div class = "contentspacer" style = "height:50vh">  </div>     
+        
+        FLOAT TEXT - ID = THINGY
+                <div class = "paneltextdiv"> <p class = "paneltext" id="THINGY"></p> </div>
+                {add text in textarray below as thingy:"text"}
+        FLOAT IMAGE: ID = THINGY 
+                <div> <img class="panel"     src="image/THINGY.png" /> </div>
+-->
 
+    <!-- PAGE CONTENT                           #region [ rgba(200, 100, 255, 0.1) ] -->
+        
+    
+        <div class="contentcontainer">                   
             <!-- Intro Scrolling Ship -->
                 <div class="contentcontainer" style="height:150vh">
                     <div id = "introdiv" class="contentcontainer" style="width:100px; position:absolute; top:60vh; left:20vw">
@@ -64,10 +76,10 @@
                 <div class = "contentspacer" style = "height:200vh">  </div>
             <!-- ######### --> 
                 <div class = "contentspacer" style = "height:200vh">  </div>
- 
-        </div>
+       </div>
 
         <!-- #endregion -->
+
 
     <!-- Script Loading -->
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -78,7 +90,9 @@
 <!------------------------->
 
 
-<!-- #region [ rgba(0, 200, 0, 0.1) ] Page Scripting -->
+<!-- PAGE SCRIPTING                             #region [ rgba(0, 200, 0, 0.1) ] -->
+    
+    
     <script>
         
     // ======= TEXT CONTENT 
@@ -175,6 +189,9 @@
             .from("#mb3", {opacity:0, scale:0.4, x:-100, duration:0.2, delay:1, ease:"power3"})
             .addDelay(2);                     
 //
+
+
+
 
 // #endregion 
 </script>
