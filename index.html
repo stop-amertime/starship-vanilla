@@ -1,0 +1,186 @@
+    <!-- #region Doctype, Headers -->
+
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8" />
+            <title>Starship</title>
+            <link rel="stylesheet" href="./style.css" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=space+mono">
+        </head>
+        <body>
+<!-- #endregion -->
+
+    <!-- #region Starfield Canvas -->
+
+        <div class="canvas-container fixed-top js-container" id="starfield">
+            <canvas class="100 canvas-container__canvas js-canvas">
+                Starfield Canvas
+            </canvas>
+        </div>
+
+    <!-- #endregion -->
+
+    <!-- #region Page Content-->
+
+        <div class="contentcontainer"> 
+
+            <!-- #region INTRO HEADER  -->
+            <div class="contentcontainer" style="height:150vh">
+                <div id = "introdiv" class="contentcontainer" style="width:100px; position:absolute; top:60vh; left:20vw">
+                    <img src="image/heroship.png" style="object-fit:contain; width:100%"/>
+                    <div id = "introtext" class = "introtext" 
+                    style=" color:white;
+                            font-family: 'Space Mono', monospace;
+                            text-align:right;
+                            position:relative;
+                            font-size:12px">
+                    </div>
+                </div>
+            </div>
+        <!-- #endregion -->
+
+            <!-- #region Entries -->
+
+            <!-- #region messenger -->
+            <div class = "paneltextdiv" style="min-height:200px"> <p class = "paneltext" id="messenger" ></p> </div>
+
+            <div id = "messengerdiv" style="position:relative; height:80vh; width:54.3vh; margin:auto;">
+                <img src = "image/messenger.png" style="position:absolute; left:0; height:100%; width:100%" />
+                    <img id = "mb1" src="image/messenger-1.png" style="height:15%; max-width:50vh;object-fit:contain;position: absolute; top: 20%; right:5%">
+                    <img id = "mb2" src="image/messenger-2.png" style="height:20%; max-width:50vh;object-fit:contain;position: absolute; top: 35%; left:5%; right:95%">
+                    <img id = "mb3" src="image/messenger-3.png" style="height:15%; max-width:50vh;object-fit:contain;position: absolute; top: 55%; right:5%">
+                </div>
+            
+            </div>
+            <!-- #endregion -->
+
+            <div class = "contentspacer" style = "height:50vh">  </div>
+
+            <!-- #region atPC -->
+            <div class = "paneltextdiv"> <p class = "paneltext" id="atPC"></p> </div>
+            <div> <img class="panel"     src="image/atPC.png" /> </div>
+            <!-- #endregion -->
+
+            <div class = "contentspacer" style = "height:200vh">  </div>
+            <div class = "contentspacer" style = "height:200vh">  </div>
+
+        
+    </div>
+
+    <!-- #endregion -->
+
+    <!-- #region Script Loading -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src="./js/starfield.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
+    <!-- #endregion -->
+
+    <!-- #region Page Scripting -->
+    <script>
+        
+    //#region ======= SETTING PANEL TEXT ====== 
+        var textarray =  
+        {
+            atPC: 
+            `<b>Day 256.</b>
+            Still no sight of land, in any direction. <br> 
+            210 solar systems in this galaxy. <br> 412 galaxies in this cluster. <br> 
+            There's just so...    <i>much</i>. `
+
+            , showerpodcast: 
+            `I leave the shower running as a sort of... <br>
+            <i>podcast</i>`
+            
+            , messenger:
+            `The text link home is a comfort, <br>                
+            but the five year delay is impractical. `
+        } ;
+        // #endregion 
+
+        
+
+    //#region GSAP Animation Scripts 
+
+        gsap.registerPlugin(ScrollTrigger , TextPlugin);
+        var width = document.body.clientWidth;
+
+
+        //#region   Intro animation.
+        gsap.to("#introtext", 
+                {
+                    duration: 3, 
+                    delay: 2,
+                    text: "Starship"
+                } );
+        
+        var introtl = gsap.timeline({repeat:0});
+        introtl.to("#introdiv", {x: 0.6*width, duration: 20, ease:"none"}) 
+          .to("#introdiv", {opacity:0, duration: 1})
+          .call(removeElement("#introdiv"));
+        //#endregion
+
+
+
+        //#region   Loop through all text panel animations.  
+
+        
+            const textpanels = gsap.utils.toArray(".paneltext");
+            textpanels.forEach( t => 
+            {
+                gsap.to(t,
+                {
+                    duration: 10,
+                    text: 
+                    {
+                        value: textarray[t.id],
+                        speed: 0.8,
+                    },
+                    ease:"none",
+                    scrollTrigger: t
+                });
+            });
+        
+        // #endregion        
+
+        // #region Messenger Boxes Animation 
+        var messtl = gsap.timeline(
+                                {
+                                    
+                                    scrollTrigger: 
+                                    {
+                                        trigger:"#messengerdiv",
+                                        pin:true,
+                                        start: "center center",
+                                        end:"+=400%",
+                                        scrub:0.1,
+                                        once:true,
+                                        markers:true
+                                    }
+                                });
+        messtl.from("#mb1", {opacity:0, scale:0.4, x:-100, duration:0.2, ease:"power3"})
+        .from("#mb2", {opacity:0, scale:0.4, x:-100, duration:0.2, delay:0.5, ease:"power3" } )
+        .from("#mb3", {opacity:0, scale:0.4, x:-100, duration:0.2, delay:1, ease:"power3"});
+
+        //messtl.staggerFrom(["#mb1","#mb2","#mb3"], {opacity:0, scale:0.4, x:-50, duration:1});
+        //#endregion 
+    //#endregion 
+
+    function removeElement(element) 
+    {
+        if (typeof(element) === "string") {
+        element = document.querySelector(element);
+        }
+        return function() {
+        element.parentNode.removeChild(element);
+        };
+    }
+
+    </script>
+    <!-- #endregion -->
+</body>
+</html>
+ 

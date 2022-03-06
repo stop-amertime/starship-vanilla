@@ -1,0 +1,88 @@
+/* #region GENERIC CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    font-family: 'Space Mono', monospace;
+}
+
+@media (min-width: 0px) {
+    .paneltextdiv { font-size: 1rem; }
+  }
+  
+  @media (min-width: 400px) {
+    .paneltextdiv { font-size: calc(1rem + 1vw); }
+  }
+  
+  @media (min-width: 1001px){
+    .paneltextdiv { font-size: 1.75rem; }
+  }
+  
+body {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 1;
+    display:block;
+}
+/* #endregion*/
+
+
+/* #region STARFIELD BG */ 
+
+.canvas-container {
+    background: black;
+    height: 120vh;
+    width: 100%;
+    z-index: -20;
+    position: fixed;
+}
+
+.canvas-container__canvas {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+/* #endregion */
+
+
+
+/* #region CONTENT SECTIONS/ROWS  */
+
+.contentcontainer {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+}
+
+.panel {
+    display:block;
+    width: 100%;
+    height:auto;
+    max-height: 50vh;
+    object-fit:contain;
+}
+
+.paneltextdiv {
+    min-height: 500px;
+    position: relative;
+    text-align: center;
+    width:100%;
+}
+.paneltext {
+    position:relative;
+    color: white;
+}
+
+.contentspacer { 
+    height: 10vh;
+}
+
+
+
+/* #endregion */
