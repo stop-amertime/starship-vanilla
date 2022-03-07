@@ -57,25 +57,21 @@
 
 
 .paneltextdiv {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    min-height: 200px;
+    height: 8em;
     position: relative;
     text-align: center;
-    width:100%;
+    width:28em;
+    margin-left:auto;
+    margin-right:auto;
 }
 .paneltext {
     position:relative;
     color: white;
 }
 
+
 .low {
-    position:absolute;
-    bottom: 0;
-    left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
+    position:relative;
 }
 
 .contentspacer { 
