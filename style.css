@@ -5,14 +5,7 @@
     * {
         scroll-behavior: smooth;
         font-family: 'Space Mono', monospace;
-    }
-
-    @media (min-width: 0px) {
-        .paneltextdiv { font-size: 1.75rem; }
-    }
-    
-    @media (min-width: 1000px){
-        .paneltextdiv { font-size: 1rem; }
+        font-size: 16px; 
     }
     
     body {
@@ -22,7 +15,6 @@
         margin: 0;
         display:block;
     }
-
 
 
 /* #region STARFIELD BG */ 
@@ -65,7 +57,9 @@
 
 
 .paneltextdiv {
-    min-height: 500px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    min-height: 200px;
     position: relative;
     text-align: center;
     width:100%;
@@ -73,6 +67,15 @@
 .paneltext {
     position:relative;
     color: white;
+}
+
+.low {
+    position:absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .contentspacer { 
