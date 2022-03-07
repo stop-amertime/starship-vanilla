@@ -2,7 +2,7 @@
 
 var sf = {
   parralax: true,
-  parralaxSens: 0.2,
+  parralaxSens: 0.05,
   starDensity: 1,
 	canvas: null,
 	container: null,

@@ -8,22 +8,22 @@
 }
 
 @media (min-width: 0px) {
-    .paneltextdiv { font-size: 1rem; }
+    .paneltextdiv { font-size: 1.75rem; }
   }
   
   @media (min-width: 400px) {
-    .paneltextdiv { font-size: calc(1rem + 1vw); }
+    .paneltextdiv { font-size: calc(1.75rem - 1vw); }
   }
   
   @media (min-width: 1001px){
-    .paneltextdiv { font-size: 1.75rem; }
+    .paneltextdiv { font-size: 1rem; }
   }
   
 body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    margin: 1;
+    margin: 0;
     display:block;
 }
 /* #endregion*/
@@ -62,11 +62,12 @@ body {
 
 .panel {
     display:block;
-    width: 100%;
-    height:auto;
-    max-height: 50vh;
+    width: min(60%, 1000px);
+    margin: auto;
+    height: auto;
     object-fit:contain;
 }
+
 
 .paneltextdiv {
     min-height: 500px;
